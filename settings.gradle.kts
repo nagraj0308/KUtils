@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "KUtils"
 include(":app")
- 
+include(":utils")

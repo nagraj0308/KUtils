@@ -41,11 +41,10 @@ dependencies {
 
 publishing {
     publications {
-        create<MavenPublication>("release") {
-            from(components["release"])
-            groupId = "com.github.nagraj0308"
-            artifactId = "kotlin-utils"
-            version = "2.3"
+        register<MavenPublication>("release") {
+            afterEvaluate{
+                from(components["release"])
+            }
         }
     }
 }

@@ -49,9 +49,4 @@ publishing {
     }
 }
 
-tasks.register<Jar>("androidSourcesJar") {
-    archiveClassifier.set("sources")
-    from(android.sourceSets["main"].java.srcDirs)
-}
-
 

@@ -41,18 +41,18 @@ dependencies {
 
 publishing {
     publications {
-        register<MavenPublication>("release") {
+        create<MavenPublication>("release") {
+            from(components["release"])
             groupId = "com.github.nagraj0308"
             artifactId = "kotlin-utils"
-            version = "2.2"
-
-            afterEvaluate {
-                from(components["release"])
-            }
+            version = "2.3"
         }
     }
-    repositories {
-        mavenLocal()
-    }
 }
+
+tasks.register<Jar>("androidSourcesJar") {
+    archiveClassifier.set("sources")
+    from(android.sourceSets["main"].java.srcDirs)
+}
+
 

@@ -2,7 +2,6 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("maven-publish")
-
 }
 
 android {
@@ -46,7 +45,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.nagraj0308"
             artifactId = "kotlin-utils"
-            version = "1.0"
+            version = "2.2"
 
             afterEvaluate {
                 from(components["release"])

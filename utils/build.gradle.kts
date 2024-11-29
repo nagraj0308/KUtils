@@ -51,4 +51,8 @@ publishing {
             }
         }
     }
+    repositories {
+        mavenLocal()
+    }
 }
+

@@ -5,7 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.nagraj.utils.Toast
+import com.nagraj.utils.Utils
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +18,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        Toast.showToast(this,"Hello")
+        Utils.showToast(this,"Hello")
     }
 }

@@ -5,11 +5,8 @@ import android.Manifest.permission
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.location.LocationManager
 import android.os.Build
-import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.common.api.ResolvableApiException
@@ -27,22 +24,6 @@ class RequestCode {
 class PermissionUtils {
 
     companion object {
-
-        fun screenShot(view: View?): Bitmap? {
-            if (view != null) {
-                view.isDrawingCacheEnabled = true
-                val bitmap = Bitmap.createBitmap(
-                    view.measuredWidth, view.measuredHeight,
-                    Bitmap.Config.RGB_565
-                )
-                view.isDrawingCacheEnabled = false
-                val canvas = Canvas(bitmap)
-                view.draw(canvas)
-                return bitmap
-            }
-            return null
-        }
-
         fun requestLocationAccessPermission(activity: Activity) {
             ActivityCompat.requestPermissions(
                 activity,

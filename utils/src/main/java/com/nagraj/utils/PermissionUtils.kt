@@ -25,16 +25,6 @@ class RequestCodePermission {
 class PermissionUtils {
 
     companion object {
-        fun requestLocationAccessPermission(activity: Activity) {
-            ActivityCompat.requestPermissions(
-                activity,
-                arrayOf(
-                    permission.ACCESS_FINE_LOCATION,
-                    permission.ACCESS_FINE_LOCATION
-                ),
-                RequestCodePermission.LOCATION
-            )
-        }
 
         fun checkReadStoragePermission(context: Context): Boolean {
             return if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
@@ -52,6 +42,17 @@ class PermissionUtils {
                     arrayOf(permission.READ_EXTERNAL_STORAGE), RequestCodePermission.READ_STORAGE
                 )
             }
+        }
+
+        fun requestLocationAccessPermission(activity: Activity) {
+            ActivityCompat.requestPermissions(
+                activity,
+                arrayOf(
+                    permission.ACCESS_FINE_LOCATION,
+                    permission.ACCESS_FINE_LOCATION
+                ),
+                RequestCodePermission.LOCATION
+            )
         }
 
         fun checkLocationAccessPermission(activity: Activity): Boolean {

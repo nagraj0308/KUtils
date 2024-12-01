@@ -14,10 +14,11 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
 
-class RequestCode {
+class RequestCodePermission {
     companion object {
         const val LOCATION = 10
         const val READ_STORAGE = 11
+        const val OPEN_CAMERA = 12
     }
 }
 
@@ -31,7 +32,7 @@ class PermissionUtils {
                     permission.ACCESS_FINE_LOCATION,
                     permission.ACCESS_FINE_LOCATION
                 ),
-                RequestCode.LOCATION
+                RequestCodePermission.LOCATION
             )
         }
 
@@ -48,7 +49,7 @@ class PermissionUtils {
         fun requestReadStoragePermission(activity: Activity) {
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
                 activity.requestPermissions(
-                    arrayOf(permission.READ_EXTERNAL_STORAGE), RequestCode.READ_STORAGE
+                    arrayOf(permission.READ_EXTERNAL_STORAGE), RequestCodePermission.READ_STORAGE
                 )
             }
         }
@@ -77,7 +78,7 @@ class PermissionUtils {
                     if (ex is ResolvableApiException) {
                         try {
                             ex.startResolutionForResult(
-                                activity, RequestCode.LOCATION
+                                activity, RequestCodePermission.LOCATION
                             )
                         } catch (e: Exception) {
                             e.printStackTrace()
@@ -86,6 +87,17 @@ class PermissionUtils {
                 }
         }
 
+        fun checkCameraPermission(context: Context): Boolean {
+            val readPermission: Int =
+                ContextCompat.checkSelfPermission(context, permission.CAMERA)
+            return readPermission == PackageManager.PERMISSION_GRANTED
+        }
+
+        fun requestCameraPermission(activity: Activity) {
+            activity.requestPermissions(
+                arrayOf(permission.CAMERA), RequestCodePermission.OPEN_CAMERA
+            )
+        }
     }
 }
 
